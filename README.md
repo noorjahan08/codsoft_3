@@ -1,10 +1,30 @@
-# password generator
+# Game
 import random
-upper = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-lower = 'abcdefghijklmnopqrstuvwxyz'
-number = '0123456789'
-symbol = '!@#$^_()[]{}/'
-all = lower_case + upper_case + symbol + number
-length = int(input('enter a number : '))
-password= "".join(random.sample(all,length))
-print('The Generated Password is',password)
+
+options = ("rock", "paper", "scissors")
+running = True
+
+while running:
+    player = None
+    computer = random.choice(options)
+
+    while player not in options:
+        player = input("Enter a choice (rock, paper, scissors): ")
+        print(f"Player: {player}")
+        print(f"Computer: {computer}")
+
+        if player == computer:
+            print("It's a tie!")
+        elif player == "rock" and computer == "scissors":
+            print("You Win!")
+        elif player == "paper" and computer == "rock":
+            print("You Win!")
+        elif player == "scissors" and computer == "paper":
+            print("You Win!")
+        else:
+            print("You Lose!")
+
+    play_again = input("Play again? (yes/no): ").lower()
+    if not play_again == "yes":
+        running = False
+        print("Thanks For Playing!")
